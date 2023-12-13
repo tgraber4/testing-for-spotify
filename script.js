@@ -19,42 +19,24 @@ var cRect = canvas.getBoundingClientRect();
 var canvasx = Math.round(cRect.left)
 var canvasy = Math.round(cRect.top)
 // var images = mood_images
-var images = ["https://cdn.glitch.com/4c9ebeb9-8b9a-4adc-ad0a-238d9ae00bb5%2Fmdn_logo-only_color.svg?1535749917189"];
-function startDownload(temps) {
-    let imageURL =
-      temps;
-    let imageDescription = "The Mozilla logo";
-  
-    downloadedImg = new Image();
-    downloadedImg.crossOrigin = "anonymous";
-    downloadedImg.addEventListener("load", imageReceived, false);
-    downloadedImg.alt = imageDescription;
-    downloadedImg.src = imageURL;
-    return downloadedImg;
-  }
+var images = ["https://cdn.britannica.com/24/174524-050-A851D3F2/Oranges.jpg"];
 
-  function imageReceived() {
-    
-  
-    ctx.width = downloadedImg.width;
-    ctx.height = downloadedImg.height;
-    ctx.innerText = downloadedImg.alt;
-
-    ctx.drawImage(downloadedImg, 0, 0);
-
-  
-    try {
-      localStorage.setItem("saved-image-example", canvas.toDataURL("image/png"));
-    } catch (err) {
-      console.error(`Error: ${err}`);
-    }
-  }
-
-var Image1 = new Image();
+var Image1 = document.getElementById("Image1");
+var Image2 = document.getElementById("Image2");
+var Image3 = document.getElementById("Image3");
+var Image4 = document.getElementById("Image4");
+var Image5 = document.getElementById("Image5");
+document.getElementById("Image1").src = images[0];
+// document.getElementById("Image2").src = images[1];
+// document.getElementById("Image3").src = images[2];
+// document.getElementById("Image4").src = images[3];
+// document.getElementById("Image5").src = images[4];
 var tempstring = "";
 console.log(images[0])
-tempstring = images.length > 0 ? images[0] : "https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg";
-Image1 = startDownload(tempstring);
+
+Image1.onload = function() {
+    ctx.drawImage(Image1, 0, 0, Image1.width, Image1.height, (width - 700) / 2 + 15, 315, 50, 50) 
+}
 
     // ctx.drawImage("name", imagex, imagey, width of clipped image, height of clipped image, x, y, width, height)
 var circle = function (x, y, radius, fillCircle) {
